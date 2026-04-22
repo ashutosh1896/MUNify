@@ -1,0 +1,57 @@
+<!-- <% layout("/layouts/boilerplate") -%> -->
+ <div class="row col-8 offset-2">
+    <div class="container mt-4 mb-4">
+        <h1>Edit Mun Details</h1>
+        <!-- <div class="form-container"> -->
+            <form method="POST" action="/conferences/<%=conference._id%>?_method=PUT">       
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="title">MUN Name</label>
+                    <input type="text" name="conference[title]" id="title" value="<%=conference.title%>" required>
+                </div>
+                <div class="row">
+                <!-- Conference Date -->
+                <div class="form-group col-md-6">
+                    <label for="conferenceDate">Conference Date</label>
+                    <input 
+                        type="date" 
+                        name="conference[conferenceDate]" 
+                        id="conferenceDate" 
+                        value="<%= conference.conferenceDate ? conference.conferenceDate.toISOString().split('T')[0] : '' %>" 
+                        required>
+                </div>
+
+                <!-- Registration Deadline -->
+                <div class="form-group col-md-6">
+                    <label for="registrationDeadline">Registration Deadline</label>
+                    <input 
+                        type="date" 
+                        name="conference[registrationDeadline]" 
+                        id="registrationDeadline" 
+                        value="<%= conference.registrationDeadline ? conference.registrationDeadline.toISOString().split('T')[0] : '' %>">
+                </div>
+                </div>
+                <!-- Location -->
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" name="conference[location]" id="location" value="<%=conference.location%>" required>
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="conference[description]" id="description" rows="4"  required><%=conference.description%></textarea>
+                </div>
+
+                <!-- Image URL -->
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input type="text" name="conference[image][url]" id="image" value="<%=conference.image.url%>">
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="submit-btn">Edit Mun Details</button>
+            </form>
+        <!-- </div> -->
+    </div>
+</div>

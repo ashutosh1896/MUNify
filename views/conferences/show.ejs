@@ -1,0 +1,175 @@
+<% layout("/layouts/boilerplate") -%>
+    <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2><b>MUNify</b></h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active" onclick="showSection('overview', this)">Overview</li>
+                <li onclick="showSection('delegates', this)">Delegates</li>
+                <li onclick="showSection('committees', this)">Committees</li>
+                <li onclick="showSection('settings', this)">Settings</li>
+            </ul>
+            <a href="dashboard.html" class="logout-link">Logout</a>
+        </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-header">
+            <div>
+                <h1>Conference Overview</h1>
+                <p><%=conference.title%> • <%=conference.location%></p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline-dark ">Export Results</button>
+                <button class="btn btn-success ">Generate Certificates</button>
+                <form action="/conferences">
+                    <button class="btn btn-danger">Back</button>
+                </form>
+            </div>
+        </div>
+    <!-- Overview Section -->
+        <div id="overview" class="section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Delegates</h3>
+                    <p>#</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Committees</h3>
+                    <p>#</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Countries</h3>
+                    <p>#</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Chair Members</h3>
+                    <p>#</p>
+                </div>
+            </div>
+            <div class="section-card">
+                <h2>Welcome to <%=conference.title%></h2>
+                <p style="color: #666; line-height: 1.8;">Welcome to the <%=conference.title%> management dashboard. From here you can manage all aspects of your conference, from delegate registrations to committee proceedings. Use the sidebar to navigate through different sections of the conference management system.</p>
+            </div>
+        </div>
+    <!-- Delegates Section -->
+        <div id="delegates" class="section">
+            <div class="section-card">
+                <h2>Manage Delegates</h2>
+                
+                <div class="controls-bar">
+                    <input type="text" class="search-input" placeholder="Search delegates by name..." onkeyup="filterDelegates()">
+                    <select class="filter-select" onchange="filterDelegates()">
+                        <option value="">All Committees</option>
+                        <option value="Security Council">Security Council</option>
+                        <option value="WHO">WHO</option>
+                        <option value="UNEP">UNEP</option>
+                    </select>
+                    <select class="filter-select" onchange="filterDelegates()">
+                        <option value="">All Countries</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="Pakistan">Pakistan</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table id="delegatesTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Country</th>
+                                <th>Committee</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ali Khan</td>
+                                <td>Pakistan</td>
+                                <td>UNEP</td>
+                                <td><span style="color: #e67e22; font-weight: bold;">Excused</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline">Edit</button>
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <!-- Committees Section -->
+        <div id="committees" class="section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 style="margin-bottom: 0;">Manage Committees</h2>
+                <button class="btn btn-primary">Create Committee</button>
+            </div>
+
+            <div class="committees-grid">
+                <div class="committee-card">
+                    <h3>Security Council</h3>
+                    <p class="agenda"><strong>Agenda:</strong> Maintenance of international peace and security, focusing on the situation in the Middle East.</p>
+                    <div class="committee-actions">
+                        <button class="btn btn-sm btn-outline">Edit Agenda</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </div>
+                </div>
+                <div class="committee-card">
+                    <h3>WHO</h3>
+                    <p class="agenda"><strong>Agenda:</strong> Strengthening global pandemic preparedness and response in the post-COVID era.</p>
+                    <div class="committee-actions">
+                        <button class="btn btn-sm btn-outline">Edit Agenda</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </div>
+                </div>
+                <div class="committee-card">
+                    <h3>UNEP</h3>
+                    <p class="agenda"><strong>Agenda:</strong> Combating plastic pollution in marine environments and promoting circular economy.</p>
+                    <div class="committee-actions">
+                        <button class="btn btn-sm btn-outline">Edit Agenda</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Settings Section -->
+        <div id="settings" class="section">
+            <div class="settings-grid">
+                <!-- Profile Section -->
+                <div class="settings-card">
+                    <h3>Profile Section</h3>
+                    <div class="settings-info">
+                        <p><strong>Name:</strong> Admin User</p>
+                        <p><strong>Email:</strong> admin@kitmun.org</p>
+                    </div>
+                    <button class="btn btn-outline-dark">View Profile</button>
+                </div>
+
+                <!-- MUN Settings -->
+                <div class="settings-card">
+                    <h3>MUN Settings</h3>
+                    <div class="settings-info">
+                        <p><strong>Name:</strong><%=conference.title%></p>
+                        <p><strong>Date:</strong><%= new Date(conference.conferenceDate).toString().split(" ").slice(0,4).join(" ") %></p>
+                        <p><strong>Description:</strong><%=conference.description%></p>
+                    </div>
+                    <button class="btn btn-outline-dark"><a href="/conferences/<%=conference._id%>/edit">Edit MUN Details</a></button>
+                </div>
+
+                <!-- Advanced Options -->
+                <div class="settings-card">
+                    <h3>Advanced Options</h3>
+                    <div style="display: flex; gap: 15px;">
+
+                        <button class="btn btn-primary">Publish MUN</button>
+
+                        <form method="POST" action="/conferences/<%=conference._id%>?_method=DELETE">
+                        <button class="btn btn-danger">Delete MUN</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

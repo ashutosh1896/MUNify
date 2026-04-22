@@ -1,0 +1,29 @@
+<% layout("/layouts/boilerplate") -%>
+<%- include("../includes/adminnavbar.ejs")%>
+<div class="container">
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="header">
+                <h2><b>Admin Dashboard</b> </h2>
+                <a href ="/conferences/new" class="btn-create">Create MUN</a>
+            </div>
+
+            <div class="mun-grid" id="mun-grid">
+                <% for (let conference of allConferences) {%>
+                <div class="mun-card">
+                    <h3><%=conference.title%></h3>
+                    <p><%=conference.description%></p>
+                    <a href="/conferences/<%=conference._id%>" class="open-btn">Open Dashboard</a>
+                </div>
+                <%}%> 
+            </div>
+
+            <!-- Empty State (Hidden) -->
+            <div class="empty-state" id="empty-state">
+                <h3>You haven't created any MUN yet</h3>
+                <p>As an admin, you can create MUNs, manage delegates, and organize committees. Start by creating your first conference to begin managing your event.</p>
+                <a href="create-mun.html" class="btn-create">Create Your First MUN</a>
+            </div>
+        </div>
+    </section>
+</div>

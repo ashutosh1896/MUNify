@@ -1,104 +1,133 @@
-const sampleUsers = [
-  {
-    name: 'Rahul Sharma',
-    age: 21,
-    email: 'rahul.sharma@gmail.com',
-    password: 'Rahul@123',
-    institute: 'IIT Bombay',
-    role: 'delegate',
-    experienceMun: 3,
-    experienceSpeaking: 6
+const conferences = [
+{
+  title: "Nagpur International MUN 2026",
+  description: "A premier MUN conference hosting delegates from across India.",
+  image: {
+    filename: "nagpurmun",
+    url: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
   },
-  {
-    name: 'Priya Verma',
-    age: 19,
-    email: 'priya.verma@gmail.com',
-    password: 'Priya@123',
-    institute: 'Delhi University',
-    role: 'delegate',
-    experienceMun: 1,
-    experienceSpeaking: 4
+  location: "Nagpur, India",
+  conferenceDate: new Date("2026-08-10"),
+  registrationDeadline: new Date("2026-07-25"),
+  status: "upcoming"
+},
+
+{
+  title: "Delhi Youth Parliament Summit",
+  description: "Debate and diplomacy with top student leaders.",
+  image: {
+    filename: "delhimun",
+    url: "https://images.unsplash.com/photo-1503428593586-e225b39bddfe"
   },
-  {
-    name: 'Arjun Patel',
-    age: 22,
-    email: 'arjun.patel@gmail.com',
-    password: 'Arjun@123',
-    institute: 'NIT Surat',
-    role: 'delegate',
-    experienceMun: 4,
-    experienceSpeaking: 7
+  location: "New Delhi, India",
+  conferenceDate: new Date("2026-07-15"),
+  registrationDeadline: new Date("2026-06-30"),
+  status: "upcoming"
+},
+
+{
+  title: "Mumbai Global MUN",
+  description: "Global issues discussed at India’s financial capital.",
+  image: {
+    filename: "mumbaimun",
+    url: "https://images.unsplash.com/photo-1492724441997-5dc865305da7"
   },
-  {
-    name: 'Sneha Iyer',
-    age: 20,
-    email: 'sneha.iyer@gmail.com',
-    password: 'Sneha@123',
-    institute: 'VIT Vellore',
-    role: 'delegate',
-    experienceMun: 2,
-    experienceSpeaking: 5
+  location: "Mumbai, India",
+  conferenceDate: new Date("2026-06-20"),
+  registrationDeadline: new Date("2026-06-05"),
+  status: "upcoming"
+},
+
+{
+  title: "Bangalore Tech MUN",
+  description: "Focus on AI, cybersecurity, and global tech policies.",
+  image: {
+    filename: "bangaloremun",
+    url: "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
   },
-  {
-    name: 'Karan Mehta',
-    age: 23,
-    email: 'karan.mehta@gmail.com',
-    password: 'Karan@123',
-    institute: 'BITS Pilani',
-    role: 'delegate',
-    experienceMun: 5,
-    experienceSpeaking: 8
+  location: "Bangalore, India",
+  conferenceDate: new Date("2026-09-05"),
+  registrationDeadline: new Date("2026-08-20"),
+  status: "upcoming"
+},
+
+{
+  title: "Hyderabad Diplomacy Meet",
+  description: "A competitive MUN with intense committee sessions.",
+  image: {
+    filename: "hyderabadmun",
+    url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
   },
-  {
-    name: 'Ananya Gupta',
-    age: 18,
-    email: 'ananya.gupta@gmail.com',
-    password: 'Ananya@123',
-    institute: 'St. Xavier’s College',
-    role: 'delegate',
-    experienceMun: 1,
-    experienceSpeaking: 3
+  location: "Hyderabad, India",
+  conferenceDate: new Date("2026-05-30"),
+  registrationDeadline: new Date("2026-05-15"),
+  status: "upcoming"
+},
+
+{
+  title: "Chennai Coastal MUN",
+  description: "Discussions on maritime law and climate change.",
+  image: {
+    filename: "chennaimun",
+    url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
   },
-  {
-    name: 'Rohit Singh',
-    age: 21,
-    email: 'rohit.singh@gmail.com',
-    password: 'Rohit@123',
-    institute: 'SRM University',
-    role: 'delegate',
-    experienceMun: 3,
-    experienceSpeaking: 6
+  location: "Chennai, India",
+  conferenceDate: new Date("2026-07-01"),
+  registrationDeadline: new Date("2026-06-15"),
+  status: "upcoming"
+},
+
+{
+  title: "Kolkata Heritage MUN",
+  description: "Historic debates in the cultural capital of India.",
+  image: {
+    filename: "kolkatamun",
+    url: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429"
   },
-  {
-    name: 'Meera Nair',
-    age: 20,
-    email: 'meera.nair@gmail.com',
-    password: 'Meera@123',
-    institute: 'Christ University',
-    role: 'delegate',
-    experienceMun: 2,
-    experienceSpeaking: 5
+  location: "Kolkata, India",
+  conferenceDate: new Date("2026-08-25"),
+  registrationDeadline: new Date("2026-08-10"),
+  status: "upcoming"
+},
+
+{
+  title: "Pune Academic MUN",
+  description: "Focused on academic excellence and research.",
+  image: {
+    filename: "punemun",
+    url: "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d"
   },
-  {
-    name: 'Aditya Kulkarni',
-    age: 22,
-    email: 'aditya.kulkarni@gmail.com',
-    password: 'Aditya@123',
-    institute: 'COEP Pune',
-    role: 'delegate',
-    experienceMun: 4,
-    experienceSpeaking: 7
+  location: "Pune, India",
+  conferenceDate: new Date("2026-06-10"),
+  registrationDeadline: new Date("2026-05-28"),
+  status: "upcoming"
+},
+
+{
+  title: "Jaipur Royal MUN",
+  description: "Experience diplomacy in a royal setting.",
+  image: {
+    filename: "jaipurmun",
+    url: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05"
   },
-  {
-    name: 'Neha Kapoor',
-    age: 19,
-    email: 'neha.kapoor@gmail.com',
-    password: 'Neha@123',
-    institute: 'Amity University',
-    role: 'delegate',
-    experienceMun: 1,
-    experienceSpeaking: 4
-  }
+  location: "Jaipur, India",
+  conferenceDate: new Date("2026-09-15"),
+  registrationDeadline: new Date("2026-08-30"),
+  status: "upcoming"
+},
+
+{
+  title: "Online Global MUN",
+  description: "Participate from anywhere with international delegates.",
+  image: {
+    filename: "onlinemun",
+    url: "https://images.unsplash.com/photo-1581091012184-7f9c6f5c8b47"
+  },
+  location: "Online",
+  conferenceDate: new Date("2026-07-20"),
+  registrationDeadline: new Date("2026-07-10"),
+  status: "upcoming"
+}
 ];
- 
-module.exports = { data: sampleUsers };
+
+module.exports = {data : conferences};

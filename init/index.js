@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const initData = require('./data.js');
-const User = require("../models/user.js");
+const Conference = require("../models/conference.js");
 const MONGO_URL = "mongodb://127.0.0.1:27017/munify"
 main().then(()=>{
     console.log("Connected successfully");
@@ -10,8 +10,8 @@ async function main(){
 }
 
 const initDB = async ()=>{
-    await User.deleteMany({});
-    await User.insertMany(initData.data);
+    await Conference.deleteMany({});
+    await Conference.insertMany(initData.data);
     console.log("data was initialized");
 }
 
