@@ -54,13 +54,41 @@ body {
     color: #ff4d4d !important;
 }
 
+
+.navbar {
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-menu a {
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #ffcc00;
+}
+
+.login-btn {
+    background-color: #ffcc00;
+    color: #003366;
+    padding: 8.75px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #e6b800;
+}
 /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://picsum.photos/seed/mun/1920/1080');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 100px 0;
+            padding: 110px 0;
             text-align: center;
         }
 
@@ -85,16 +113,21 @@ body {
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 12px 30px ;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s, background 0.3s;
+            font-size: 1rem ;
+            transition: transform 0.5s, background 0.5s !important;
+        }
+
+        .big{
+            padding: 12px 40px !important;
+            font-size: 1.2rem !important;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) !important;
         }
 
         .btn-primary {
@@ -102,10 +135,10 @@ body {
             color: #003366;
         }
 
-        .btn-secondary {
+        .btn-outline-light {
             background-color: transparent;
             color: white;
-            border: 2px solid white;
+            border: 2px solid white !important;
         }
 
         /* Features Section */
@@ -142,6 +175,7 @@ body {
         .feature-box h3 {
             color: #003366;
             margin-bottom: 15px;
+            font-size: 1.25rem !important;
         }
 
         /* Committees Preview Section */
@@ -161,6 +195,10 @@ body {
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .noborder{
+             padding: 0px !important;
+            border-top: none !important;
         }
 
         .committee-card img {

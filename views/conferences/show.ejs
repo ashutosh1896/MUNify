@@ -1,17 +1,5 @@
 <% layout("/layouts/boilerplate") -%>
-    <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <h2><b>MUNify</b></h2>
-            </div>
-            <ul class="sidebar-menu">
-                <li class="active" onclick="showSection('overview', this)">Overview</li>
-                <li onclick="showSection('delegates', this)">Delegates</li>
-                <li onclick="showSection('committees', this)">Committees</li>
-                <li onclick="showSection('settings', this)">Settings</li>
-            </ul>
-            <a href="dashboard.html" class="logout-link">Logout</a>
-        </div>
+<%- include("../includes/sidebar.ejs")%>
     <!-- Main Content -->
     <div class="main-content">
         <div class="content-header">
@@ -108,15 +96,17 @@
             </div>
 
             <div class="committees-grid">
+                <%for(committee of conference.committees) {%> 
                 <div class="committee-card">
-                    <h3>Security Council</h3>
-                    <p class="agenda"><strong>Agenda:</strong> Maintenance of international peace and security, focusing on the situation in the Middle East.</p>
+                    <h3><%=comittee.title%></h3>
+                    <p class="agenda"><strong>Agenda:</strong><%=committee.agenda%></p>
                     <div class="committee-actions">
                         <button class="btn btn-sm btn-outline">Edit Agenda</button>
                         <button class="btn btn-sm btn-danger">Delete</button>
                     </div>
                 </div>
-                <div class="committee-card">
+                <%}%>
+                <!-- <div class="committee-card">
                     <h3>WHO</h3>
                     <p class="agenda"><strong>Agenda:</strong> Strengthening global pandemic preparedness and response in the post-COVID era.</p>
                     <div class="committee-actions">
@@ -131,7 +121,13 @@
                         <button class="btn btn-sm btn-outline">Edit Agenda</button>
                         <button class="btn btn-sm btn-danger">Delete</button>
                     </div>
-                </div>
+                </div> -->
+            </div>
+            <!-- hidden section -->
+            <div class="empty-state" id="empty-state">
+                <h3>You haven't created any Committee yet</h3>
+                <p>As an admin, you can create and organize committees. Start by creating your first committee to begin managing your event.</p>
+                <a href="#" class="btn-create">Create Your First Committee</a>
             </div>
         </div>
     <!-- Settings Section -->
@@ -155,9 +151,11 @@
                         <p><strong>Date:</strong><%= new Date(conference.conferenceDate).toString().split(" ").slice(0,4).join(" ") %></p>
                         <p><strong>Description:</strong><%=conference.description%></p>
                     </div>
-                    <button class="btn btn-outline-dark"><a href="/conferences/<%=conference._id%>/edit">Edit MUN Details</a></button>
+                    <form action="/conferences/<%=conference._id%>/edit">
+                        <button class="btn btn-outline-dark">Edit MUN Details</button>
+                    </form>
                 </div>
-
+                
                 <!-- Advanced Options -->
                 <div class="settings-card">
                     <h3>Advanced Options</h3>

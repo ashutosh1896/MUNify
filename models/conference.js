@@ -45,7 +45,13 @@ const conferenceSchema = new Schema ({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    committees  : [
+        {
+            type : Schema.Types.ObjectId,
+            ref : "Committee",
+        }
+    ]
 
 });
 
